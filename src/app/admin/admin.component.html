@@ -1,0 +1,63 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+    <!-- @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String category;
+    private Double price;
+    private String image; -->
+
+    <div>
+        <label>Name:</label>
+        <input type="text" formControlName="name">
+        <!-- <div *ngIf="bookForm.get('title').invalid && bookForm.get('title').touched">Title is required</div> -->
+    </div>
+
+    <div>
+        <label>Category:</label>
+        <input type="text" formControlName="category">
+        <!-- <div *ngIf="bookForm.get('author').invalid && bookForm.get('author').touched">Author is required</div> -->
+    </div>
+
+    <div>
+        <label>Price:</label>
+        <input type="number" formControlName="price">
+        <!-- <div *ngIf="bookForm.get('price').invalid && bookForm.get('price').touched">Valid price is required</div> -->
+    </div>
+
+
+
+    <div>
+        <label>Image URL:</label>
+        <input type="text" formControlName="image">
+    </div>
+
+    <div>
+        <button type="submit">Add Book</button>
+    </div>
+
+</form>
+
+
+<div>
+    <!-- Find Book Form -->
+    <div class="search-container">
+        <label for="searchInput">Search Book:</label>
+        <input type="text" id="searchInput" [(ngModel)]="searchTerm">
+        <button (click)="findBook()">Find Book</button>
+    </div>
+
+
+    <div *ngIf="foundBook">
+        <h4>Found Book:</h4>
+        <p>Name: {{ foundBook.name }}</p>
+        <p>Author: {{ foundBook.category }}</p>
+        <p>Price: {{ foundBook.price }}</p>
+        <p>Author: {{ foundBook.image }}</p>
+        
+
+        <button (click)="deleteBook(foundBook.id)">Delete Book</button>
+    </div>
+
+</div>

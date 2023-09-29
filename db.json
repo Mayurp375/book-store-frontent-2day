@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Ikigai Hardcover",
+      "description": "200",
+      "category": "Non-Fiction",
+      "image": "https://m.media-amazon.com/images/I/814L+vq01mL._SY466_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "The Subtle Art ",
+      "description": "300",
+      "category": "Non-Fiction",
+      "image": "https://m.media-amazon.com/images/I/511vJPN7p5L._SY445_SX342_.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Outliers: The Story of Suc...",
+      "description": "500",
+      "category": "Non-Fiction",
+      "image": "https://m.media-amazon.com/images/I/41MJc+8fkyL._BG0,0,0,0_FMpng_AC_SY320_SX320_.jpg"
+    },
+    {
+      "id": 4,
+      "name": "The power of mind",
+      "description": "100",
+      "category": "Non-Fiction",
+      "image": "https://m.media-amazon.com/images/I/41+CqNWoutS._BG0,0,0,0_FMpng_AC_SY320_SX320_.jpg"
+    },
+    {
+      "id": 5,
+      "name": "The Art of money",
+      "description": "100",
+      "category": "Non-Fiction",
+      "image": "https://m.media-amazon.com/images/I/51nwH4tj-tL._BG0,0,0,0_FMpng_AC_SY320_SX320_.jpg"
+    },
+    {
+      "id": 6,
+      "name": "how to win friends",
+      "description": "100",
+      "category": "Non-Fiction",
+      "image": "https://images-eu.ssl-images-amazon.com/images/I/618XGVFYlwL._AC_UL200_SR200,200_.jpg"
+    },
+    {
+      "id": 7,
+      "name": "The Alchemist",
+      "description": "100",
+      "category": "Non-Fiction",
+      "image": "https://images-eu.ssl-images-amazon.com/images/I/51bVNTqHFlL._AC_UL200_SR200,200_.jpg"
+    },
+    {
+      "id": 8,
+      "name": "psychology of money",
+      "description": "100",
+      "category": "Fiction",
+      "image": "https://images-eu.ssl-images-amazon.com/images/I/71g2ednj0JL._AC_UL200_SR200,200_.jpg"
+    },
+    {
+      "id": 9,
+      "name": "courage to be disliked",
+      "description": "100",
+      "category": "Non-Fiction",
+      "image": "https://images-eu.ssl-images-amazon.com/images/I/71k7V0QvcdL._AC_UL200_SR200,200_.jpg"
+    }
+  ],
+  "register": [
+    {
+      "username": "mayur",
+      "password": "password",
+      "email": "mayur@gmail.com",
+      "role": "USER",
+      "id": 1
+    }
+  ],
+  "cart": []
+}

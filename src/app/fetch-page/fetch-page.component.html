@@ -1,0 +1,53 @@
+<div class="content-container">
+
+    <div class="category-sidebar">
+        <h2>Categories</h2>
+        <ul>
+            <ul>
+                <li><a href="#" (click)="showAll(); $event.preventDefault()">All</a></li>
+                <li *ngFor="let category of categories">
+                    <a href="#" (click)="filterByCategory(category); $event.preventDefault()">{{category}}</a>
+                </li>
+            </ul>
+            <!-- <li><a href="#" >Fiction</a></li>
+            <li><a href="#" >Non-Fiction</a></li>
+            <li><a href="#">Science</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Romance</a></li> -->
+        </ul>
+    </div>
+    <div class="list-data">
+        <div class="scroll-container">
+            <div class="card-data" style="display: flex; flex-wrap: wrap;height: 500px;justify-content: center;">
+                <mat-card *ngFor="let item of hero" class="example-card" style="justify-content: center;">
+                    <div class="image-data">
+                        <mat-card-header class="box">
+                            <img mat-card-image src="{{item.image}}" alt="Photo of Item"
+                                style="height: 150px ; width: 150px;">
+                        </mat-card-header>
+                    </div>
+
+                    <div class="cart-item">
+                        <mat-card-header class="box" style="justify-content: center;">
+                            <p>{{item.name}}</p>
+                        </mat-card-header>
+
+                        <mat-card-header class="box" style="justify-content: center;">
+                            <mat-card-title>₹ {{item.description}}</mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-actions class="box" style="justify-content: center;">
+                            <button mat-button>Buy</button>
+                            <button mat-button (click)="addToCart(item)"><span
+                                    class="material-icons">shopping_cart</span></button>
+                        </mat-card-actions>
+                    </div>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>

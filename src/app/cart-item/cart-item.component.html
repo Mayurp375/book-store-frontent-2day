@@ -1,0 +1,42 @@
+<div class="cart-display">
+    <h2>Cart Items:</h2>
+
+    <ul class="cart-list">
+        <li *ngFor="let cartItem of cart" class="cart-item">
+            <img mat-card-image src="{{cartItem.image}}" alt="Photo of Item"
+            class="cart-image">
+            
+            <div class="item-details">
+                <span class="item-name">{{ cartItem.name }}</span>
+                <span class="item-price">₹ {{cartItem.description}}</span>
+            </div>
+            
+            <button mat-button (click)="removeFromCart(cartItem.id)" class="delete-button">
+                <span class="material-icons">delete</span>
+            </button>
+        </li>
+    </ul>
+    
+    <div class="checkout">
+        <h3>Total: ₹ {{calculateTotal()}}</h3>
+        <button mat-button (click)="openLoginDialog()">Checkout</button>
+    </div>
+</div>
+
+
+
+<!-- <div class="cart-display">
+    <h2>Cart Items:</h2>
+    
+    <div *ngFor="let cartItem of cart">
+        {{ cartItem.name }} - ₹ {{cartItem.description}}
+        <img mat-card-image src="{{cartItem.image}}" alt="Photo of Item"
+        style="height: 150px ; width: 150px;">
+
+        <button mat-button (click)="removeFromCart(cartItem.id)"><span class="material-icons">delete</span></button>
+    </div>
+    <div class="checkout">
+        <h3>Total: ₹ {{calculateTotal()}}</h3>
+        <button mat-button>Checkout</button>
+    </div>
+</div> -->

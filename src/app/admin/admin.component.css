@@ -1,0 +1,88 @@
+/* Style for the form container */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each input field container */
+form > div {
+    margin-bottom: 20px;
+}
+
+/* Style for labels */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Style for input fields */
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style for input fields on focus */
+form input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style for validation error messages */
+div > div {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Style for the submit button */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Disabled state for the submit button */
+button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+/* Existing styles... */
+
+/* Style for the search container */
+.search-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Style for the found book details */
+div > h4 {
+    margin-top: 20px;
+}
+
+/* Space between found book details and delete button */
+div > p + button {
+    margin-top: 20px;
+}
