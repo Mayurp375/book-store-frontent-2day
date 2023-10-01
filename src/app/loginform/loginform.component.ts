@@ -26,7 +26,7 @@ export class LoginformComponent {
         next: (token: any) => {
           if (token) {
             alert("Login successful!");
-            sessionStorage.setItem('authToken',token)
+            sessionStorage.setItem('authToken',token.token)
             this.dialogRef.close(true);
           } else {
             alert("Login failed!");
