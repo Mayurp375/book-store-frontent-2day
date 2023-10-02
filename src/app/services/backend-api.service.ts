@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs';
 
 
 @Injectable({
@@ -29,8 +28,11 @@ export class BackendApiService {
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<any> {
-    return this.http.get('http://localhost:3000/items');
+    return this.http.get('http://localhost:8080/api/books/allBookd');
   }
+  // getItems(): Observable<any> {
+  //   return this.http.get('http://localhost:3000/items');
+  // }
   registerUser(data: any): Observable<any> {
     return this.http.post('http://localhost:8080/register', data)
   }
