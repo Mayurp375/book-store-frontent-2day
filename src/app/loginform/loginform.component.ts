@@ -38,16 +38,4 @@ export class LoginformComponent {
       })
     }
   }
-
-  // onFormSubmit() {
-  //   this.userService.login(this.empForm).subscribe({
-  //     next:(token)=>{
-  //       sessionStorage.setItem('authToken',token)
-  //     },
-  //     error:(error)=>{
-  //       console.error("Failed to login:", error);
-  //     }
-  //   }
-  //   );
-  // }
 }

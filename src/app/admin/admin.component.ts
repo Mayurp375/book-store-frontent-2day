@@ -12,6 +12,9 @@ export class AdminComponent {
 
   bookForm !: FormGroup;
 
+  searchTerm: string = '';  // To store search input
+  foundBook: any = null;   // To store the found book
+
   constructor(private fb: FormBuilder,
     private bookService: BackendApiService,
     private router: Router
@@ -29,17 +32,13 @@ export class AdminComponent {
     this.bookService.saveBook(this.bookForm.value).subscribe({
       next: () => {
         console.log("success")
+        alert("succesfully added ....")
       }, error: (err) => {
         console.log(err);
+        alert("Somthing wrong ....")
       }
     })
-    // Here, you can call your service to save the book details
   }
-
-
-  searchTerm: string = '';  // To store search input
-  foundBook: any = null;   // To store the found book
-
 
   findBook(): void {
 
@@ -70,7 +69,7 @@ export class AdminComponent {
   }
 
   logout(): void {
-    
+
     this.router.navigate(['/home']);  // replace '/home' with your home route path
-}
+  }
 }
