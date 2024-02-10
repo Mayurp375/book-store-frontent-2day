@@ -1,0 +1,10 @@
+<h3>Your orders are</h3>
+<div *ngIf="order">
+  <h2>Order Details</h2>
+
+  <div class="order-info">
+    <p>Order ID: {{ order.id }}</p>
+    <p>Total Amount: {{ order.totalAmount }}</p>
+
+  </div>
+</div>

@@ -8,8 +8,9 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class BackendApiService {
 
-  deleteBookById(id: number):Observable<any> {
-    
+  constructor(private http: HttpClient) { }
+
+  deleteBookById(id: number):Observable<any> {   
     return this.http.delete<string>(`http://localhost:8080/api/books/${id}`)
   }
 
@@ -20,12 +21,6 @@ export class BackendApiService {
   searchBook(id: string) {
     return this.http.get(`http://localhost:8080/api/books/${id}`);
   }
-
-  getCategories() {
-    throw new Error('Method not implemented.');
-  }
-
-  constructor(private http: HttpClient) { }
 
   getItems(): Observable<any> {
     return this.http.get('http://localhost:8080/api/books/allBookd');
@@ -44,6 +39,7 @@ export class BackendApiService {
     return this.http.post<string>('http://localhost:8080/login',data)
      
   }
+
   // login(data: any): Observable<any> {
   //   return this.http.get<any[]>('http://localhost:3000/register')
   //     .pipe(
@@ -76,4 +72,11 @@ export class BackendApiService {
   //     }
   //   });
   // }
+
+
+  private baseUrl = 'http://localhost:8080/api/orders/place';
+
+  placeOrder(userId:number) {
+    return this.http.post(`${this.baseUrl}?userId=${userId}`, {});
+  }
 }

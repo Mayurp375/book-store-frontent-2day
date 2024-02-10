@@ -6,6 +6,7 @@ import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
   // {
   //     path: 'admin',component :AdminComponent
   // },
- 
+  {path:'order-details',component:OrderDetailsComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginformComponent },
   {
