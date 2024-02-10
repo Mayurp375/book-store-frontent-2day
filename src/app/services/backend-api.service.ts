@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs';
 
 
 @Injectable({
@@ -9,8 +8,9 @@ import { map } from 'rxjs';
 })
 export class BackendApiService {
 
-  deleteBookById(id: number):Observable<any> {
-    
+  constructor(private http: HttpClient) { }
+
+  deleteBookById(id: number):Observable<any> {   
     return this.http.delete<string>(`http://localhost:8080/api/books/${id}`)
   }
 
@@ -22,15 +22,12 @@ export class BackendApiService {
     return this.http.get(`http://localhost:8080/api/books/${id}`);
   }
 
-  getCategories() {
-    throw new Error('Method not implemented.');
-  }
-
-  constructor(private http: HttpClient) { }
-
   getItems(): Observable<any> {
-    return this.http.get('http://localhost:3000/items');
+    return this.http.get('http://localhost:8080/api/books/allBookd');
   }
+  // getItems(): Observable<any> {
+  //   return this.http.get('http://localhost:3000/items');
+  // }
   registerUser(data: any): Observable<any> {
     return this.http.post('http://localhost:8080/register', data)
   }
@@ -42,6 +39,7 @@ export class BackendApiService {
     return this.http.post<string>('http://localhost:8080/login',data)
      
   }
+
   // login(data: any): Observable<any> {
   //   return this.http.get<any[]>('http://localhost:3000/register')
   //     .pipe(
@@ -74,4 +72,11 @@ export class BackendApiService {
   //     }
   //   });
   // }
+
+
+  private baseUrl = 'http://localhost:8080/api/orders/place';
+
+  placeOrder(userId:number) {
+    return this.http.post(`${this.baseUrl}?userId=${userId}`, {});
+  }
 }

@@ -5,34 +5,34 @@ import { LoginformComponent } from './loginform/loginform.component';
 import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth.guard';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: '', redirectTo: 'home',pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: FetchPageComponent
+    path: 'home',component: FetchPageComponent
   },
   {
-    path: 'login',
-    component: LoginformComponent
+    path: 'login',component: LoginformComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
-  },{
+    path: 'register', component: RegisterComponent
+  },
+  { 
     path:'cart',component:CartItemComponent
   },
+  // {
+  //     path: 'admin',component :AdminComponent
+  // },
+  {path:'order-details',component:OrderDetailsComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginformComponent },
   {
-      path: 'admin',component :AdminComponent
+    path: '**', redirectTo:'home',
   },
-  {
-    path: '**',
-    redirectTo:'home',
-  }
 ];
 
 

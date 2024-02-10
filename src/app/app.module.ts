@@ -18,6 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminComponent } from './admin/admin.component';
     RegisterComponent,
     FetchPageComponent,
     CartItemComponent,
-    AdminComponent
+    AdminComponent,
+    OrderDetailsComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
