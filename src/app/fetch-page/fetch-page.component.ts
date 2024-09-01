@@ -8,47 +8,62 @@ import { BackendApiService } from '../services/backend-api.service';
 })
 export class FetchPageComponent implements OnInit {
 
-
   hero: any[] = [];
   cart: any[] = [];
-  categories: string[] = ['Fiction', 'Non-Fiction', 'Science', 'History', 'Romance'];
+  categories: string[] = [];
   filteredItems: any[] = [];
 
-
+  constructor(private apiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
-    this.hero = await this.apiService.getItems().toPromise();
-    this.cart = await this.apiService.getCartItems().toPromise();
-    this.filteredItems = this.hero;
+    const response = await this.apiService.getItems().toPromise();
+    this.apiService.getItems().subscribe({
+      next: (data: any) => {
+        if (data) {
+          this.hero = response.data;
+          this.filteredItems = this.hero;
+          console.log('Items:', this.hero);
+          this.categories = Array.from(new Set(this.hero.map(item => item.category)));
+        }
+      }, error: (err) => {
+        console.log("Error during login:", err);
+      }
+    })
   }
 
   filterByCategory(category: string): void {
-    this.filteredItems = this.hero.filter(item => item.category === category);
+    console.log('Filtering by category:', category);
+    const uniqueCategories: Set<string> = new Set(this.hero.map(item => item.category));
+    console.log('uniq data', uniqueCategories)
+    this.categories = Array.from(uniqueCategories);
+
+    if (category) {
+      this.filteredItems = this.hero.filter(item => item.category === category);
+    } else {
+      this.filteredItems = [...this.hero];
+    }
+
   }
 
   showAll(): void {
+    console.log('Showing all items');
     this.filteredItems = this.hero;
   }
-  constructor(private apiService: BackendApiService) { }
-
-
 
   async addToCart(item: any): Promise<void> {
-    await this.apiService.addToCart(item).toPromise();
-    this.cart = await this.apiService.getCartItems().toPromise();
+    try {
+      // await this.apiService.addToCart(item).toPromise();
+      console.log('Item added to cart:', item);
+      this.cart.push(item)
+      // await this.apiService.getCartItems().toPromise();
+      console.log('Updated Cart:', this.cart);
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
   }
-  // async addToCart(item: any){
-  //  this.apiService.addToCart(item).subscribe({
-  //   next:()=>{
-  //     console.log(item);   
-  //   }
-  //  });
-  //   this.cart = await this.apiService.getCartItems().toPromise();
-  // }
 
   async removeFromCart(id: number): Promise<void> {
-    await this.apiService.removeFromCart(id).toPromise();
-    this.cart = await this.apiService.getCartItems().toPromise();
+    this.cart
   }
 
   calculateTotal(): number {
