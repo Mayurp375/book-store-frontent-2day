@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from '../services/backend-api.service';
-import { Router } from '@angular/router';
 import { LoginformComponent } from '../loginform/loginform.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -9,43 +8,24 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css']
 })
-export class CartItemComponent implements OnInit  {
-  hero: any[] = [];
+export class CartItemComponent implements OnInit {
+  hero: any
   cart: any[] = [];
-  categories: string[] = ['Fiction', 'Non-Fiction', 'Science', 'History', 'Romance'];
   filteredItems: any[] = [];
-
-
+  item: any
 
   async ngOnInit(): Promise<void> {
-    this.hero = await this.apiService.getItems().toPromise();
-    this.cart = await this.apiService.getCartItems().toPromise();
+    this.hero = this.apiService.getItems().subscribe(
+      (data: any) => {
+        console.log('Data retrieved:', data); // For debugging
+      },
+      (error: any) => {
+        console.error('Error retrieving data:', error); // Handle errors
+      });
     this.filteredItems = this.hero;
   }
 
-  filterByCategory(category: string): void {
-    this.filteredItems = this.hero.filter(item => item.category === category);
-  }
-
-  showAll(): void {
-    this.filteredItems = this.hero;
-  }
-  constructor(private apiService: BackendApiService,public dialog: MatDialog) { }
-
-
-
-  // async addToCart(item: any): Promise<void> {
-  //   await this.apiService.addToCart(item).toPromise();
-  //   this.cart = await this.apiService.getCartItems().toPromise();
-  // }
-  // async addToCart(item: any){
-  //  this.apiService.addToCart(item).subscribe({
-  //   next:()=>{
-  //     console.log(item);   
-  //   }
-  //  });
-  //   this.cart = await this.apiService.getCartItems().toPromise();
-  // }
+  constructor(private apiService: BackendApiService, public dialog: MatDialog) { }
 
   async removeFromCart(id: number): Promise<void> {
     await this.apiService.removeFromCart(id).toPromise();
@@ -60,28 +40,7 @@ export class CartItemComponent implements OnInit  {
     const dataRef = this.dialog.open(LoginformComponent, {
       width: '500px',
     });
-
-    
-    dataRef.afterClosed().subscribe(result => {});
+    dataRef.afterClosed().subscribe(result => { });
   }
 
-  // checkout() {
-  //   // Assume you have a variable `currentUser` that holds the logged-in user's details
-  //   const userId = this.currentUser.id;
-  
-  //   // For each item in the cart, call the API.
-  //   // This is a simple example. In a real-world scenario, you may want to handle these API calls more efficiently.
-  //   for (const item of this.cart) {
-  //     const bookId = item.id;  // Or whatever the item's ID field is called
-  //     const quantity = 1;  // Or calculate quantity based on your cart logic
-  
-  //     this.apiService.addToCart(userId, bookId, quantity)
-  //       .subscribe(response => {
-  //         console.log('Item added to cart:', response);
-  //         // Handle successful addition, maybe remove the item from the local cart or show a message
-  //       }, error => {
-  //         console.error('Error adding item to cart:', error);
-  //       });
-  //   }
-  // }
 }

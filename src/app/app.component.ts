@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   
   data: any = [];
 
-  constructor(public dialog: MatDialog, private dataService: BackendApiService,private http: HttpClient) {}
+  constructor(public dialog: MatDialog,private http: HttpClient) {}
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
@@ -32,16 +32,16 @@ export class AppComponent implements OnInit {
     dataRef.afterClosed().subscribe(result => {});
   }
   ngOnInit(): void {
-    this.getData().subscribe((data) => {
-      this.data = data;     
-      console.log(this.data);
-    });
+    // this.getData().subscribe((data) => {
+    //   this.data = data;     
+    //   console.log(this.data);
+    // });
   }
 
-  getData() {
-    // localStorage.getItem _ to store in local storage
-    return this.http.get('http://localhost:3000/items');
-  }
+  // getData() {
+  //   // localStorage.getItem _ to store in local storage
+  //   return this.http.get('http://localhost:3000/items');
+  // }
 
   registerPage(){
     
