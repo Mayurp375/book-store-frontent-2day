@@ -35,7 +35,9 @@ export class RegisterComponent {
           console.log(this.empForm.value);
           this.dialogRef.close(true);
           window.location.reload();//Auto reloade
-        },
+        },error:(err:any)=>{
+          alert(err);
+        }
       })
     }
   }

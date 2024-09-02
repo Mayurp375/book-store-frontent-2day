@@ -30,7 +30,6 @@ export class LoginformComponent {
             this.dialogRef.close(true);
           } else {
             alert("Login failed!");
-            
           }
         }, error: (err) => {
           console.log("Error during login:", err);

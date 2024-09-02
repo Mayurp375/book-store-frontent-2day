@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendApiService {
-   baseUrl :string ='http://localhost:8080';
-
-  deleteBookById(id: number):Observable<any> {
-    
-    return this.http.delete<string>(`http://localhost:8080/api/books/${id}`)
+  baseUrl: string = 'http://localhost:8080';
+  cart: any[] = [];
+  deleteBookById(id: number): Observable<any> {
+    return this.http.delete<string>(`${this.baseUrl}/api/books/${id}`)
   }
 
-  saveBook(books: any):Observable<any> {
-    return this.http.post<any>('http://localhost:8080/api/books/add',books)
+  saveBook(books: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl+'/api/books/add', books)
   }
 
   searchBook(id: string) {
-    return this.http.get(`http://localhost:8080/api/books/${id}`);
+    return this.http.get(`${this.baseUrl}/api/books/${id}`);
   }
 
   getCategories() {
@@ -30,29 +28,24 @@ export class BackendApiService {
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<any> {
-    // return this.http.get('http://localhost:3000/items');
-    return this.http.get('http://localhost:8080/api/medicine/allMedicine');
+    return this.http.get(this.baseUrl.concat('/api/medicine/allMedicine'));
   }
   registerUser(data: any): Observable<any> {
-    return this.http.post('http://localhost:8080/register', data)
+    return this.http.post(this.baseUrl+'/register', data)
   }
 
   login(data: any): Observable<any> {
-    return this.http.post<string>('http://localhost:8080/login',data)
+    return this.http.post<string>(this.baseUrl+'/login', data)
   }
 
-  cart: string[] =[];
-  getCartItems(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/orders/place');
+  addToCart(item: any) {
+    this.cart.push(item);//
   }
-
-  // Add item to cart
-  addToCart(item: any): Observable<any> {
-    return this.cart =item;//
+  getCartItems() {
+    return this.cart
   }
-
   // Remove item from cart
-  removeFromCart(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:3000/cart/${id}`);
+  removeFromCart(id: number) {
+    return this.cart ;
   }
 }

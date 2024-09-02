@@ -52,11 +52,7 @@ export class FetchPageComponent implements OnInit {
 
   async addToCart(item: any): Promise<void> {
     try {
-      // await this.apiService.addToCart(item).toPromise();
-      console.log('Item added to cart:', item);
-      this.cart.push(item)
-      // await this.apiService.getCartItems().toPromise();
-      console.log('Updated Cart:', this.cart);
+      this.apiService.addToCart(item)
     } catch (error) {
       console.error('Error adding item to cart:', error);
     }

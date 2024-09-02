@@ -15,25 +15,20 @@ export class CartItemComponent implements OnInit {
   item: any
 
   async ngOnInit(): Promise<void> {
-    this.hero = this.apiService.getItems().subscribe(
-      (data: any) => {
-        console.log('Data retrieved:', data); // For debugging
-      },
-      (error: any) => {
-        console.error('Error retrieving data:', error); // Handle errors
-      });
-    this.filteredItems = this.hero;
+      console.log('Updated Cart from:', this.apiService.getCartItems());
+      this.cart = this.apiService.getCartItems()
+      console.log('Updated Cart:', this.cart);
   }
 
   constructor(private apiService: BackendApiService, public dialog: MatDialog) { }
 
   async removeFromCart(id: number): Promise<void> {
-    await this.apiService.removeFromCart(id).toPromise();
-    this.cart = await this.apiService.getCartItems().toPromise();
+    console.log('id',id)
+    this.apiService.removeFromCart(id);  
   }
 
   calculateTotal(): number {
-    return this.cart.reduce((acc, item) => acc + parseFloat(item.description), 0);
+    return this.cart.reduce((acc, item) => acc + parseFloat(item.price), 0);
   }
 
   openLoginDialog(): void {
