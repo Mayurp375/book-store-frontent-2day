@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginformComponent } from './loginform/loginform.component';
 import { RegisterComponent } from './register/register.component';
-import { BackendApiService } from './services/backend-api.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'book-store';
+  title = 'Medi-Store';
   
   data: any = [];
 
