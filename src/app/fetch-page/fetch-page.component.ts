@@ -63,7 +63,7 @@ export class FetchPageComponent implements OnInit {
   }
 
   async removeFromCart(id: number): Promise<void> {
-    this.cart
+    this.cart 
   }
 
   calculateTotal(): number {

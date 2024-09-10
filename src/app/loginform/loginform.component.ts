@@ -13,16 +13,20 @@ export class LoginformComponent {
 
   empForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: BackendApiService, private dialogRef: MatDialogRef<LoginformComponent>) {
+  constructor(private fb: FormBuilder,
+    private userService: BackendApiService,
+    private dialogRef: MatDialogRef<LoginformComponent>) {
     this.empForm = this.fb.group({
       email: [''],
-      password: ['']
+      password: [''],
+      role: ['']
     });
   }
-  
+
   onFormSubmit() {
     if (this.empForm.valid) {
       this.userService.login(this.empForm.value).subscribe({
+<<<<<<< Updated upstream
         next: (token: any) => {
           if (token) {
             alert("Login successful!");
@@ -32,22 +36,17 @@ export class LoginformComponent {
             alert("Login failed!");
             
           }
+=======
+        next: (obj: any) => {
+          alert(obj.message);
+          sessionStorage.setItem('Authorization', obj.token)
+          this.dialogRef.close(true);
+>>>>>>> Stashed changes
         }, error: (err) => {
-          console.log("Error during login:", err);
+          alert(err.error.message);
+          this.dialogRef.close(true);
         }
       })
     }
   }
-
-  // onFormSubmit() {
-  //   this.userService.login(this.empForm).subscribe({
-  //     next:(token)=>{
-  //       sessionStorage.setItem('authToken',token)
-  //     },
-  //     error:(error)=>{
-  //       console.error("Failed to login:", error);
-  //     }
-  //   }
-  //   );
-  // }
 }
