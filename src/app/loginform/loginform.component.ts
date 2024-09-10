@@ -26,22 +26,10 @@ export class LoginformComponent {
   onFormSubmit() {
     if (this.empForm.valid) {
       this.userService.login(this.empForm.value).subscribe({
-<<<<<<< Updated upstream
-        next: (token: any) => {
-          if (token) {
-            alert("Login successful!");
-            sessionStorage.setItem('authToken',token)
-            this.dialogRef.close(true);
-          } else {
-            alert("Login failed!");
-            
-          }
-=======
         next: (obj: any) => {
           alert(obj.message);
           sessionStorage.setItem('Authorization', obj.token)
           this.dialogRef.close(true);
->>>>>>> Stashed changes
         }, error: (err) => {
           alert(err.error.message);
           this.dialogRef.close(true);
