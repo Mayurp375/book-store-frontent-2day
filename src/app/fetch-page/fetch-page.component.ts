@@ -16,17 +16,17 @@ export class FetchPageComponent implements OnInit {
   constructor(private apiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
-    const response = await this.apiService.getItems().toPromise();
+    // const response = await this.apiService.getItems().toPromise();
     this.apiService.getItems().subscribe({
       next: (data: any) => {
         if (data) {
-          this.hero = response.data;
+          this.hero = data.data;
           this.filteredItems = this.hero;
           console.log('Items:', this.hero);
           this.categories = Array.from(new Set(this.hero.map(item => item.category)));
         }
       }, error: (err) => {
-        console.log("Error during login:", err);
+        console.log("problem during fetch:", err);
       }
     })
   }
@@ -51,15 +51,7 @@ export class FetchPageComponent implements OnInit {
   }
 
   async addToCart(item: any): Promise<void> {
-    try {
-      // await this.apiService.addToCart(item).toPromise();
-      console.log('Item added to cart:', item);
-      this.cart.push(item)
-      // await this.apiService.getCartItems().toPromise();
-      console.log('Updated Cart:', this.cart);
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
-    }
+      this.apiService.addToCart(item)    
   }
 
   async removeFromCart(id: number): Promise<void> {
