@@ -42,13 +42,20 @@ export class BackendApiService {
   }
 
   cart: string[] =[];
-  getCartItems(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/orders/place');
-  }
+  
 
   // Add item to cart
-  addToCart(item: any): Observable<any> {
-    return this.cart =item;//
+  addToCart(item: any) {
+    console.log("added items",item);
+    this.cart.push(item);//
+    console.log("this.cart",this.cart);
+    return this.cart
+  }
+
+  getCartItems() {
+    // return this.http.get('http://localhost:8080/api/orders/place');
+    console.log("this.cart",this.cart);
+    return this.cart;
   }
 
   // Remove item from cart
