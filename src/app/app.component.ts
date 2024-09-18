@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+
   title = 'book-store';
   name = 'Sarswati Book Shop'
   data: any = [];
@@ -27,19 +28,31 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => { });
   }
+
   openLoginDialog(): void {
     const dataRef = this.dialog.open(LoginformComponent, {
       width: '500px',
     });
-
     dataRef.afterClosed().subscribe(result => {});
   }
+  
   ngOnInit(): void {
+    this.updateCartSize();
   }
+  
+  updateCartSize(): void {
+    this.cartSize = this.backService.getCartItems().length;
+  }
+  toggleBadgeVisibility(): void {
+    this.updateCartSize(); 
+  }
+    
 
   registerPage(){
     
   }
+
+  cartSize : number = 0
 
   isLogedIn(){
     const value = sessionStorage.getItem('isLogedIn');

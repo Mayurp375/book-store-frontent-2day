@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Confirm Your Order</h1>
+<div mat-dialog-content>
+  <p>Please confirm the following details:</p>
+  <ul>
+    <li *ngFor="let item of data.items">
+      Medicine: {{ item.name }} - Quantity: {{ item.quantity }}
+    </li>
+  </ul>
+  <mat-form-field appearance="outline">
+    <mat-label>Address</mat-label>
+    <input matInput [(ngModel)]="data.address">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Contact</mat-label>
+    <input matInput 
+           [(ngModel)]="data.contact" 
+           maxlength="10" 
+           pattern="^\d{10}$" 
+           required  type="number">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onConfirm()">Confirm</button>
+</div>
+

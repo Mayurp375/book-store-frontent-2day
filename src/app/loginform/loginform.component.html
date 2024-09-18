@@ -1,35 +1,39 @@
 <div>
-    <div >
+    <div>
         <div class="main">
             <div mat-dialog-title style="display: flex; justify-content: center;">
                 <h1>Log In</h1>
             </div>
-            
             <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
                 <div mat-dialog-content class="inputForm">
                     <div class="row">
-
-                        <mat-form-field appearance="outline" >
+                        <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName="email">
                         </mat-form-field>
                         <div class="row">
-                            <mat-radio-group aria-label="Select an option" style="align-items: center;" formControlName="role">
-                                <mat-radio-button value="USER">USER</mat-radio-button>
-                                <mat-radio-button value="SELLER">SELLER</mat-radio-button>
-                            </mat-radio-group>
+                            <mat-form-field>
+                                <mat-label>User Type</mat-label>
+                                <mat-select formControlName="role">
+                                  <mat-option value="USER">USER</mat-option>
+                                  <mat-option value="SELLER">SELLER</mat-option>
+                                </mat-select>
+                              </mat-form-field>
                         </div>
-                        <mat-form-field appearance="outline"  >
+                        <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
                             <input matInput type="password" formControlName="password">
                         </mat-form-field>
-                        
                     </div>
                 </div>
-                <div mat-dialog-action style=" display: flex; gap: 99px; justify-content: center; padding: 0 25px ;">
-                    <button mat-raised-button color="primary" style="flex: 1px;">Login</button>
+                <div mat-dialog-action style="display: flex; gap: 99px; justify-content: center; padding: 0 25px;">
+                    <button mat-raised-button color="primary" style="flex: 1;">Login</button>
                 </div>
             </form>
+            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <a (click)="navigateToRegister()" style="margin-right: 20px;">Register User</a>
+                <a (click)="navigateToForgotPassword()">Forgot Password?</a>
+            </div>
         </div>
     </div>
 </div>

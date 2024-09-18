@@ -14,16 +14,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: FetchPageComponent
+    path: 'home',component: FetchPageComponent
   },
   {
-    path: 'login',
-    component: LoginformComponent
+    path: 'login', component: LoginformComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
+    path: 'register',component: RegisterComponent
   }, 
   {
     path: 'cart', component: CartItemComponent
@@ -35,8 +32,7 @@ const routes: Routes = [
     path: 'orders-history', component: OrdersHistoryComponent
   },
   {
-    path: '**',
-    redirectTo: 'home',
+    path: '**', redirectTo: 'home',
   }
 ];
 

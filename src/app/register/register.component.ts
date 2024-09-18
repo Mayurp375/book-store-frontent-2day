@@ -17,8 +17,9 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private userService: BackendApiService,
-    private snackBarPop : MatSnackBar,
-    private dialogRef: MatDialogRef<RegisterComponent>
+    private snackBarPop : MatSnackBar
+    // ,
+    // private dialogRef: MatDialogRef<RegisterComponent>
   ) {
 
     this.empForm = this.fb.group({
@@ -37,7 +38,7 @@ export class RegisterComponent {
             duration:this.userService.MAXIMUM_NUMBER * 1000
           })
           console.log(this.empForm.value);
-          this.dialogRef.close(true);
+          // this.dialogRef.close(true);
           window.location.reload();//Auto reloade
         },error:(err)=>{
           this.snackBarPop.open(err.message,'',{

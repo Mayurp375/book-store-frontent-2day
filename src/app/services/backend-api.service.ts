@@ -8,20 +8,28 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class BackendApiService {
+
   baseUrl: string = 'http://localhost:8080/';
-  MAXIMUM_NUMBER = 10;
+  MAXIMUM_NUMBER = 3;
   token = sessionStorage.getItem('Authorization');
+
   deleteBookById(id: number): Observable<any> {
     return this.http.delete<string>(`http://localhost:8080/api/books/${id}`)
   }
 
-  allOrders(token:string) :Observable<any> {
+  placeOrder(token:string,data: any): Observable<any>  {
     console.log('token',`${this.token}`);
     const headers = new HttpHeaders({
-      
-      'Authorization': token
-      // `${this.token}`
-      ,
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(this.baseUrl+'api/orders/place',data,{headers});
+  }
+
+
+  allOrders(token:string) :Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': token,
       'Content-Type': 'application/json'
     });
     return this.http.get(this.baseUrl+'api/orders/allOrders',{headers});

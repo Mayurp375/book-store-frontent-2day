@@ -4,6 +4,7 @@ import { BackendApiService } from '../services/backend-api.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { validateVerticalPosition } from '@angular/cdk/overlay';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginform',
@@ -17,6 +18,7 @@ export class LoginformComponent {
   constructor(private fb: FormBuilder,
     private userService: BackendApiService,
     private snackBarPop : MatSnackBar,
+    private router: Router,
     private dialogRef: MatDialogRef<LoginformComponent>) {
     this.empForm = this.fb.group({
       email: [''],
@@ -41,5 +43,16 @@ export class LoginformComponent {
         }
       })
     }
+    this.dialogRef.close(true);
+  }
+
+  navigateToRegister() {
+    this.dialogRef.close(); // Close the dialog
+    this.router.navigate(['/register']); // Navigate to register page
+  }
+
+  navigateToForgotPassword() {
+    this.dialogRef.close(); // Close the dialog
+    this.router.navigate(['/forgot-password']); // Navigate to forgot password page
   }
 }
