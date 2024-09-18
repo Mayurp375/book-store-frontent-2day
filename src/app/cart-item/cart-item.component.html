@@ -1,5 +1,17 @@
 <div class="cart-display">
-    <h2>Cart Items:</h2>
+    <div *ngIf="cart.length === 0" class="empty-cart">
+        <img src="assets/png/empty-cart.png" alt="Empty Cart" class="empty-cart-image" />
+        <h2>Your cart is empty!</h2>
+        <button mat-raised-button 
+                color="primary" 
+                routerLink="/shop" 
+                class="shop-now-button">
+          Shop Now
+        </button>
+      </div>
+    
+    <div  *ngIf="cart.length > 0">
+        <h2>Cart Items:</h2>
 
     <ul class="cart-list">
         <li *ngFor="let cartItem of cart" class="cart-item">
@@ -18,6 +30,7 @@
 
     <div class="checkout">
         <h3>Total: ₹ {{calculateTotal()}}</h3>
-        <button mat-button (click)="openLoginDialog()">Checkout</button>
+        <button mat-button (click)="openLoginDialog()" [disabled]="cart.length === 0">Checkout</button>
+    </div>
     </div>
 </div>

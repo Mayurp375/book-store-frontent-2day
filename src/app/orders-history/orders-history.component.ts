@@ -45,7 +45,7 @@ export class OrdersHistoryComponent {
 
 
   ngOnInit(): void {
-     this.token = this.apiService.getFromSessionStorage('Authorization');
+    this.token = this.apiService.getFromSessionStorage('Authorization');
     this.apiService.allOrders(this.token).subscribe({
       next: (response) => {
         if (response.status === 'Success') {

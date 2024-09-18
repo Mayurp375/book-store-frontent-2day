@@ -24,7 +24,12 @@ import { OrdersHistoryComponent } from './orders-history/orders-history.componen
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatFormFieldModule} from '@angular/material/form-field';
+
+import {MatSelectModule} from '@angular/material/select';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ConfirmOrderDialogComponent } from './confirm-order-dialog/confirm-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FetchPageComponent,
     CartItemComponent,
     AdminComponent,
-    OrdersHistoryComponent
+    OrdersHistoryComponent,
+    ConfirmOrderDialogComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -45,7 +51,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BrowserAnimationsModule,
     MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule,MatInputModule,MatRadioModule
     ,HttpClientModule,MatGridListModule,MatCardModule,MatSnackBarModule,MatIconModule,MatMenuModule,MatTableModule,MatPaginatorModule
-    ,MatSortModule,MatFormFieldModule
+    ,MatSortModule,MatFormFieldModule,MatSelectModule,MatCheckboxModule,MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

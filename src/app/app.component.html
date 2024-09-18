@@ -1,36 +1,34 @@
 <div class="display">
-  <div class="toolbar" role="banner">
-    <img width="40" alt="Angular Logo"
-      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-    <span style="font-weight: bold;">
-      <h2> {{name}}</h2>
-    </span>
-    <div class="spacer"></div>
-
-    <a href="/home"><span class="material-icons"
-        style="visibility: visible; color: black;"><mat-icon>home</mat-icon></span></a>
-
-    <div class="button-data">
-      <div class="login-data" (click)="openLoginDialog()">
-        <button *ngIf="!isLogedIn()" mat-raised-button matTooltip="Login"
-          aria-label="Button that displays a tooltip when focused or hovered over">
-          Login
+  <header class="toolbar" role="banner">
+    <a routerLink="/home">
+      <img width="40" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+    </a>
+    <h2 class="app-title">{{ name }}</h2>
+    
+    <nav class="toolbar-navigation">
+      <!-- <a routerLink="/home" class="nav-icon">
+        <mat-icon>home</mat-icon>
+      </a> -->
+      
+      <div class="auth-buttons">
+        <button *ngIf="!isLogedIn()" mat-raised-button (click)="openLoginDialog()" matTooltip="Login">
+          <mat-icon>person</mat-icon>SignUp
         </button>
-      </div>
-
-      <div class="reg" (click)="openRegisterDialog()">
-        <button *ngIf="!isLogedIn()" mat-raised-button matTooltip="Register"
-          aria-label="Button that displays a tooltip when focused or hovered over">
+        <!-- <button *ngIf="!isLogedIn()" mat-raised-button (click)="openRegisterDialog()" matTooltip="Register">
           Register
+        </button> -->
+        <button *ngIf="isLogedIn()" mat-raised-button (click)="logOut()" matTooltip="Logout">
+          Logout
         </button>
       </div>
-      <button *ngIf="isLogedIn()" mat-raised-button matTooltip="Register"
-        aria-label="Button that displays a tooltip when focused or hovered over" (click)="logOut()">
-        LogOut
+
+      <button matBadge="{{ cartSize }}" mat-icon-button routerLink="cart" (click)="toggleBadgeVisibility()">
+        <span class="material-icons">shopping_cart</span>
       </button>
-      <button mat-button routerLink="cart"><span class="material-icons">shopping_cart</span></button>
-      <div *ngIf="isLogedIn()">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      
+      
+      <div *ngIf="isLogedIn()" class="user-menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -38,17 +36,18 @@
             <mat-icon>account_circle</mat-icon>
             <span>Profile</span>
           </button>
-          <button mat-menu-item routerLink="orders-history" >
+          <button mat-menu-item routerLink="orders-history">
             <mat-icon>add_shopping_cart</mat-icon>
             <span>Your Orders</span>
           </button>
           <button mat-menu-item>
             <mat-icon>notifications</mat-icon>
-            <span>Notification</span>
+            <span>Notifications</span>
           </button>
         </mat-menu>
       </div>
-    </div>
-  </div>
+    </nav>
+  </header>
+  
   <router-outlet></router-outlet>
 </div>
