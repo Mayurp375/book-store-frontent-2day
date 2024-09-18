@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BackendApiService } from '../services/backend-api.service';
 import { MatDialogRef } from '@angular/material/dialog';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-loginform',
@@ -15,6 +16,7 @@ export class LoginformComponent {
 
   constructor(private fb: FormBuilder,
     private userService: BackendApiService,
+    private snackBarPop : MatSnackBar,
     private dialogRef: MatDialogRef<LoginformComponent>) {
     this.empForm = this.fb.group({
       email: [''],
@@ -27,8 +29,11 @@ export class LoginformComponent {
     if (this.empForm.valid) {
       this.userService.login(this.empForm.value).subscribe({
         next: (obj: any) => {
-          alert(obj.message);
+          this.snackBarPop.open(obj.message,'',{
+            duration:this.userService.MAXIMUM_NUMBER * 1000
+          })
           sessionStorage.setItem('Authorization', obj.token)
+          sessionStorage.setItem('isLogedIn', JSON.stringify(true))
           this.dialogRef.close(true);
         }, error: (err) => {
           alert(err.error.message);

@@ -5,6 +5,7 @@ import { LoginformComponent } from './loginform/loginform.component';
 import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 
 const routes: Routes = [
   {
@@ -23,15 +24,19 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  },{
-    path:'cart',component:CartItemComponent
+  }, 
+  {
+    path: 'cart', component: CartItemComponent
   },
   {
-      path: 'admin',component :AdminComponent
+    path: 'admin', component: AdminComponent
+  },
+  {
+    path: 'orders-history', component: OrdersHistoryComponent
   },
   {
     path: '**',
-    redirectTo:'home',
+    redirectTo: 'home',
   }
 ];
 
