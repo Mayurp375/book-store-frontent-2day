@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule for Angular Material animations
 import { MatButtonModule } from '@angular/material/button'; // Import the MatButtonModule for the 'mat-raised-button'
 import { MatDialogModule } from '@angular/material/dialog'; // Import the MatDialogModule for the MatDialog
-
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,13 @@ import {MatCardModule} from '@angular/material/card';
 import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     RegisterComponent,
     FetchPageComponent,
     CartItemComponent,
-    AdminComponent
+    AdminComponent,
+    OrdersHistoryComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -36,7 +44,8 @@ import { AdminComponent } from './admin/admin.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule,MatInputModule,MatRadioModule
-    ,HttpClientModule,MatGridListModule,MatCardModule
+    ,HttpClientModule,MatGridListModule,MatCardModule,MatSnackBarModule,MatIconModule,MatMenuModule,MatTableModule,MatPaginatorModule
+    ,MatSortModule,MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

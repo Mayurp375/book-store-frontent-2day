@@ -1,0 +1,88 @@
+.demo-table {
+  width: 100%;
+}
+
+.mat-column-demo-position {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-demo-name {
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.mat-column-demo-weight {
+  font-style: italic;
+}
+
+.mat-column-demo-symbol {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* Container for the table */
+.table-container {
+  max-width: 100%;
+  /* Ensure it doesn't exceed the viewport width */
+  overflow-x: auto;
+  /* Enable horizontal scrolling if needed */
+  padding: 16px;
+  /* Add some padding around the table */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  /* Use full width of the container */
+  border-collapse: collapse;
+  /* Remove double borders */
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  padding: 8px;
+  /* Add padding for better spacing */
+  text-align: left;
+  /* Align text to the left */
+  vertical-align: middle;
+  /* Center vertically */
+}
+
+/* Image styling */
+img {
+  max-width: 50px;
+  /* Set a max width for images */
+  height: auto;
+  /* Keep the aspect ratio */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+  /* Adjust padding and font sizes for smaller screens */
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 4px;
+    /* Reduce padding */
+    font-size: 14px;
+    /* Smaller font size */
+  }
+
+  img {
+    max-width: 40px;
+    /* Smaller image size on mobile */
+  }
+}
+
+/* Filter input field styling */
+.mat-form-field {
+  width: 100%;
+  /* Make the filter input full width */
+  margin-bottom: 16px;
+  /* Add some space below the input */
+}

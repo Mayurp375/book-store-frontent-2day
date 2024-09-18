@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginformComponent } from './loginform/loginform.component';
 import { RegisterComponent } from './register/register.component';
 import { BackendApiService } from './services/backend-api.service';
-import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'book-store';
-  
+  name = 'Sarswati Book Shop'
   data: any = [];
 
-  constructor(public dialog: MatDialog,private http: HttpClient) {}
+  constructor(public dialog: MatDialog,
+     private snackBarPop : MatSnackBar ,
+     private backService : BackendApiService ,private router: Router) {}
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
@@ -32,18 +35,23 @@ export class AppComponent implements OnInit {
     dataRef.afterClosed().subscribe(result => {});
   }
   ngOnInit(): void {
-    // this.getData().subscribe((data) => {
-    //   this.data = data;     
-    //   console.log(this.data);
-    // });
   }
-
-  // getData() {
-  //   // localStorage.getItem _ to store in local storage
-  //   return this.http.get('http://localhost:3000/items');
-  // }
 
   registerPage(){
     
+  }
+
+  isLogedIn(){
+    const value = sessionStorage.getItem('isLogedIn');
+    return value ? JSON.parse(value) : false;
+  }
+
+  logOut(){
+    this.snackBarPop.open("LogedOut Successfull",'',{
+      duration:this.backService.MAXIMUM_NUMBER * 1000
+    })
+    sessionStorage.removeItem('Authorization')
+    sessionStorage.removeItem('isLogedIn')
+    this.router.navigate(['/home']);
   }
 }
