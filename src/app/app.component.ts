@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { BackendApiService } from './services/backend-api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.cartSize = this.backService.getCartItems().length;
     this.updateCartSize();
   }
   

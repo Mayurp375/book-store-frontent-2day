@@ -9,7 +9,6 @@
       <!-- <a routerLink="/home" class="nav-icon">
         <mat-icon>home</mat-icon>
       </a> -->
-      
       <div class="auth-buttons">
         <button *ngIf="!isLogedIn()" mat-raised-button (click)="openLoginDialog()" matTooltip="Login">
           <mat-icon>person</mat-icon>SignUp
@@ -22,10 +21,13 @@
         </button>
       </div>
 
-      <button matBadge="{{ cartSize }}" mat-icon-button routerLink="cart" (click)="toggleBadgeVisibility()">
+      <!-- <button matBadge="{{ cartSize }}" mat-icon-button routerLink="cart">
         <span class="material-icons">shopping_cart</span>
+      </button> -->
+      <button class="cart-numb" mat-icon-button routerLink="cart" (click)="toggleBadgeVisibility()">
+        <span class="material-icons">shopping_cart</span>
+        <span class="custom-badge">{{ cartSize }}</span>
       </button>
-      
       
       <div *ngIf="isLogedIn()" class="user-menu">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">

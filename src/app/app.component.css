@@ -9,12 +9,30 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px;
-    /* Adjust for padding */
-    background-color: #f8f8f8;
-    /* Change to your preferred color */
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Light background color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+
+.cart-numb {
+    position: relative; /* Positioning for the badge */
+  }
+  
+  .custom-badge {
+    position: absolute;
+    right: 1px; /* Adjust this as needed */
+    top: 3px;    /* Adjust this as needed */
+    background-color: red; /* Change to your preferred color */
+    color: white;  /* Text color */
+    border-radius: 50%; /* Make it circular */
+    padding: 0 5px; /* Padding around the text */
+    font-size: 12px; /* Font size */
+  }
+  
 
 .app-title {
     font-weight: bold;
@@ -44,15 +62,17 @@
 
 
 .auth-buttons button {
-    margin-right: 16px; /* Adjust spacing as needed */
-  }
-  
-  .auth-buttons button:last-child {
-    margin-right: 0; /* Remove margin for the last button */
-  }
-  
+    margin-right: 16px;
+    /* Adjust spacing as needed */
+}
 
-  
+.auth-buttons button:last-child {
+    margin-right: 0;
+    /* Remove margin for the last button */
+}
+
+
+
 @media (max-width: 768px) {
     .toolbar {
         flex-direction: column;

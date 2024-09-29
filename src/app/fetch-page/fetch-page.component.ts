@@ -16,19 +16,38 @@ export class FetchPageComponent implements OnInit {
   constructor(private apiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
-    // const response = await this.apiService.getItems().toPromise();
     this.apiService.getItems().subscribe({
       next: (data: any) => {
         if (data) {
           this.hero = data.data;
           this.filteredItems = this.hero;
-          console.log('Items:', this.hero);
           this.categories = Array.from(new Set(this.hero.map(item => item.category)));
         }
-      }, error: (err) => {
+      },
+      error: (err) => {
         console.log("problem during fetch:", err);
       }
-    })
+    });
+  }
+
+
+  searchQuery: string = '';
+  filteredSuggestions: any[] = [];
+
+  onSearchChange(): void {
+    if (this.searchQuery) {
+      this.filteredSuggestions = this.hero.filter(item =>
+        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.filteredSuggestions = [];
+    }
+  }
+
+  selectSuggestion(suggestion: any): void {
+    this.filteredItems = [suggestion]; // Show only the selected item
+    this.searchQuery = suggestion.name; // Update the search query
+    this.filteredSuggestions = []; // Clear suggestions
   }
 
   filterByCategory(category: string): void {

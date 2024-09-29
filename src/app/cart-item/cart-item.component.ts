@@ -44,7 +44,6 @@ export class CartItemComponent implements OnInit {
       const orderData = {
         itemsDtoList: this.cart.map(item => ({
           medicineId: item.id,
-          name: item.name,
           quantity: item.quantity ? item.quantity : 1
         })),
         totalAmount: this.calculateTotal() // Total from the cart
