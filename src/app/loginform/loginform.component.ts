@@ -36,9 +36,15 @@ export class LoginformComponent {
           })
           sessionStorage.setItem('Authorization', obj.token)
           sessionStorage.setItem('isLogedIn', JSON.stringify(true))
+          if (this.empForm.value.role === 'SELLER') {
+            this.router.navigate(['/seller-dashboard']);
+          } 
           this.dialogRef.close(true);
         }, error: (err) => {
-          alert(err.error.message);
+          console.log('eer',err);     
+          this.snackBarPop.open(err.error.message,'',{
+            duration:this.userService.MAXIMUM_NUMBER * 1000
+          })
           this.dialogRef.close(true);
         }
       })

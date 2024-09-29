@@ -6,6 +6,7 @@ import { FetchPageComponent } from './fetch-page/fetch-page.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { AdminComponent } from './admin/admin.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'orders-history', component: OrdersHistoryComponent
+  },
+  {
+    path: 'seller-dashboard', component: SellerDashboardComponent
   },
   {
     path: '**', redirectTo: 'home',

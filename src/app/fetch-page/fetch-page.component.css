@@ -31,6 +31,37 @@
     margin-right: 20px;
    
 }
+.search-container {
+    position: relative;
+}
+
+.suggestions-list {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+#search-bar {
+    height: 35px;
+    border-radius: 32px;
+    border: 0.5px solid lightgrey;
+    width: 14%;
+    padding-right: 37px;
+    padding-left: 11px;
+}
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
 
 .cart-display {
     flex: 0.5;

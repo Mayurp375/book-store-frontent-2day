@@ -30,6 +30,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ConfirmOrderDialogComponent } from './confirm-order-dialog/confirm-order-dialog.component';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ConfirmOrderDialogComponent } from './confirm-order-dialog/confirm-orde
     CartItemComponent,
     AdminComponent,
     OrdersHistoryComponent,
-    ConfirmOrderDialogComponent
+    ConfirmOrderDialogComponent,
+    SellerDashboardComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
